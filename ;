@@ -1,0 +1,23 @@
+import java.util.PriorityQueue;
+
+public class MaximumAveragePassRatio1792 {
+  public class ClassRecord {
+    public int pass;
+    public int total;
+
+  }
+
+  public static double maxAverageRatio(int classes[][], int extraStudents) {
+    PriorityQueue<ClassRecord> pq = new PriorityQueue<>((a, b) -> Double.compare(b.delta, a.delta));
+    for (var record : classes) {
+      pq.add(new ClassRecord(record[0], record[1], (double) record[0] / record[1]));
+    }
+
+  }
+
+  public static void main(String[] args) {
+    int classes[][] = { { 1, 2 }, { 3, 5 }, { 2, 2 } };
+    int extraStudents = 2;
+    System.out.println(maxAverageRatio(classes, extraStudents));
+  }
+}
